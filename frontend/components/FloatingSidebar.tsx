@@ -4,9 +4,10 @@ import { MessageSquare, PhoneCall, Ear, ShieldAlert } from 'lucide-react';
 interface FloatingSidebarProps {
   onOpenChat: () => void;
   onOpenSignLanguage: () => void;
+  onOpenEmergencyNumbers: () => void;
 }
 
-export const FloatingSidebar: React.FC<FloatingSidebarProps> = ({ onOpenChat, onOpenSignLanguage }) => {
+export const FloatingSidebar: React.FC<FloatingSidebarProps> = ({ onOpenChat, onOpenSignLanguage, onOpenEmergencyNumbers }) => {
   return (
     <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 flex flex-col space-y-3">
       <div className="bg-white shadow-lg rounded-full p-2 flex flex-col space-y-4 border border-gov-border">
@@ -20,10 +21,14 @@ export const FloatingSidebar: React.FC<FloatingSidebarProps> = ({ onOpenChat, on
             Live Chat / محادثة
           </span>
         </button>
-        <button className="p-3 rounded-full bg-gray-50 text-gov-navy hover:bg-gov-navy hover:text-white transition-all group relative" aria-label="24/7 Hotline">
+        <button 
+          onClick={onOpenEmergencyNumbers}
+          className="p-3 rounded-full bg-gray-50 text-gov-navy hover:bg-gov-navy hover:text-white transition-all group relative" 
+          aria-label="Emergency Numbers"
+        >
           <PhoneCall size={20} />
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity">
-            1000 Hotline / الخط الساخن
+            Emergency Numbers / أرقام الطوارئ
           </span>
         </button>
         <button 
