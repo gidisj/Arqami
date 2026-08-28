@@ -8,6 +8,7 @@ import { DisputesView } from './components/DisputesView.tsx';
 import { HistoryView } from './components/HistoryView.tsx';
 import { Chatbot } from './components/Chatbot.tsx';
 import { SignLanguageModal } from './components/SignLanguageModal.tsx';
+import { EmergencyNumbersModal } from './components/EmergencyNumbersModal.tsx';
 import { MOCK_USER, MOCK_SIMS, MOCK_HISTORY } from './constants.ts';
 import { SimData, SimStatus, HistoryEvent } from './types.ts';
 import { ShieldCheck, AlertCircle, Smartphone } from 'lucide-react';
@@ -27,6 +28,7 @@ const App: React.FC = () => {
   const [certSim, setCertSim] = useState<SimData | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isSignLanguageOpen, setIsSignLanguageOpen] = useState(false);
+  const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
 
   // Simulate incoming authorization request after a few seconds for demo purposes
   useEffect(() => {
@@ -98,9 +100,11 @@ const App: React.FC = () => {
       <FloatingSidebar 
         onOpenChat={() => setIsChatOpen(true)} 
         onOpenSignLanguage={() => setIsSignLanguageOpen(true)}
+        onOpenEmergencyNumbers={() => setIsEmergencyOpen(true)}
       />
       <Chatbot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
       <SignLanguageModal isOpen={isSignLanguageOpen} onClose={() => setIsSignLanguageOpen(false)} />
+      <EmergencyNumbersModal isOpen={isEmergencyOpen} onClose={() => setIsEmergencyOpen(false)} />
 
       <main className="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full">
         
